@@ -4,8 +4,8 @@ using namespace std;
 
 int main()
 {
-    float sumaNotas = 0;
-    //En este punto solo están declarados los valores de notas[]
+    float sumaNotas = 0; //Variable que almacena la suma de los numeros del for
+    // Hay que declarar la variable array en NUM_NOTAS
     const int NUM_NOTAS= 3; //Se declara const porque es la constante
     float notas[NUM_NOTAS]; //array de NUM_NOTAS casillas para guardar las notas
     //Usamos un for para pedir las notas
@@ -15,7 +15,7 @@ int main()
     }
     //La variable i toma los valores de los índices de los array
     for (int i = 0; i < NUM_NOTAS; i++) {
-        cout << "la nota " << i << " es: " << notas[i] << endl;
+        cout << "la nota " << i + 1 << " es: " << notas[i] << endl;
         sumaNotas += notas[i];
     }
 
