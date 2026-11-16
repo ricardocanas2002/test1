@@ -1,27 +1,42 @@
 #include <iostream>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
+struct Libro
+{
+    string titulo;
+    string autor;
+    int anio;
+};
+
+void mostrarLibro(Libro l)
+{
+    cout << "Titulo: " << l.titulo << endl;
+    cout << "Autor: " << l.autor << endl;
+    cout << "Anio: " << l.anio << endl;
+}
+
 int main()
 {
-    float sumaNotas = 0; //Variable que almacena la suma de los numeros del for
-    // Hay que declarar la variable array en NUM_NOTAS
-    const int NUM_NOTAS= 3; //Se declara const porque es la constante
-    float notas[NUM_NOTAS]; //array de NUM_NOTAS casillas para guardar las notas
-    //Usamos un for para pedir las notas
-    for (int i = 0; i < NUM_NOTAS; i++) {
-        cout << "nota: " << i + 1 << endl;
-        cin >> notas[i];
-    }
-    //La variable i toma los valores de los índices de los array
-    for (int i = 0; i < NUM_NOTAS; i++) {
-        cout << "la nota " << i + 1 << " es: " << notas[i] << endl;
-        sumaNotas += notas[i];
-    }
 
-    cout << "La sumatoria total de notas es de: " << sumaNotas << endl;
-    cout << "---------------" << endl;
-    cout << "El promedio de notas por este estudiante es de: " << sumaNotas/NUM_NOTAS << endl;
+    Libro miLibro;
+
+    cout << "Ingrese el titulo del libro que desee registrar: " << endl;
+    getline(cin, miLibro.titulo);
+    cout << "Ingrese el nombre del autor que desea registrar: " << endl;
+    getline(cin, miLibro.autor);
+    cout << "Ingrese el anio en el que se sacó el libro: " << endl;
+    cin >> miLibro.anio;
+
+    mostrarLibro(miLibro);
+
+    ofstream archivo("libros.txt", ios::app);
+
+    archivo << miLibro.titulo << ";" << miLibro.autor << ";" << miLibro.anio << endl;
+
+    archivo.close();
 
     return 0;
 }
